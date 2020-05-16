@@ -73,7 +73,9 @@ When the sprint is started the team member is assigned a user story number and t
 | 9              | 3               | 3        | 🗹     | 𐄂           | 𐄂    | 3               | -                 |
 
 # Test Driven Development<a name = "tdd"></a>
+Test-driven development (TDD) is a software development process that relies on the repetition of a very short development cycle: requirements are turned into very specific test cases, then the code is improved so that the tests pass. This is opposed to software development that allows code to be added that is not proven to meet requirements. 
 
+Since we are coding out the application in Java we will be using JUnit testing.
 # Test Coverage Metric<a name = "tcm"></a>
 
 # Team Version Control<a name = "tvc"></a>
