@@ -107,7 +107,7 @@ Split into respective files (HTML, JavaScript and CSS).
 
 ### 4. Non Functional requirements
 
-a) Maintainability (Supportability) – The application should require the least amount of effort to support in near future. It should be easy to identify and fix a defect.</br>
+a) Maintainability (Supportability) – The application should require the least amount of effort to support in near future. It should be easy to identify and fix a defect.</br></br>
 1.Readability: Code should be self-explanatory. Get a feel of story reading, while going through the code. Use appropriate name for variables, functions and classes. If you are taking more time to understand the code, then either code needs refactoring or at least comments have to be written to make it clear.
 2.Code is in sync with existing code patterns/technologies.</br>
 3.Design patterns: Use appropriate design pattern (if it helps), after </br>completely understanding the problem and context.
