@@ -82,4 +82,38 @@ Since we are coding out the application in Java we will be using JUnit testing.
 
 # Code-review Checklist<a name = "coderev"></a>
 
+Reviews allow collaborators to comment on the changes proposed in pull requests, approve the changes, or request further changes before the pull request is merged. Repository administrators can require that all pull requests are approved before being merged.
+
+### 1. Code formatting
+
+a) Ensure that proper naming conventions (CamelCase) have been followed.
+
+b) Remove the commented code as this is always a blocker, while going through the code. Commented code can be obtained from Source Control (like SVN), if required.
+
+### 2. Architecture
+
+a) The code should follow the defined architecture.
+
+1.Separation of Concerns followed
+Split into multiple layers and tiers as per requirements (Presentation, Business and Data layers).
+Split into respective files (HTML, JavaScript and CSS).
+2.Code is in sync with existing code patterns/technologies.
+3.Design patterns: Use appropriate design pattern (if it helps), after completely understanding the problem and context.
+
+### 3. Coding best practices
+
+1.No hard coding, use constants/configuration values.</br>
+2.Group similar values under an enumeration (enum).</br>
+3.Avoid multiple if/else blocks.</br>
+4.Use framework features, wherever possible instead of writing custom code.
+
+### 4. Non Functional requirements
+
+a) Maintainability (Supportability) – The application should require the least amount of effort to support in near future. It should be easy to identify and fix a defect.</br></br>
+1.Readability: Code should be self-explanatory. Get a feel of story reading, while going through the code. Use appropriate name for variables, functions and classes. If you are taking more time to understand the code, then either code needs refactoring or at least comments have to be written to make it clear.
+2.Code is in sync with existing code patterns/technologies.</br>
+3.Design patterns: Use appropriate design pattern (if it helps), after </br>completely understanding the problem and context.
+
+### 5. Object-Oriented Analysis and Design (OOAD) Principles
+
 [Top](#contents)
