@@ -4,19 +4,18 @@ import java.util.ArrayList;
 
 public class Survey {
     String title;
-    ArrayList<Question> questions = new ArrayList<>();
 
-    SurveyResponse surveyResponse;
+    ArrayList<Question> questions = new ArrayList<>();
     ArrayList<Integer> expectedAnswers = new ArrayList<>();
+    ArrayList<SurveyResponse> responses = new ArrayList<>();
 
     public Survey() {
 
     }
 
-    public Survey(String title, ArrayList<Question> questions, SurveyResponse surveyResponse) {
+    public Survey(String title, ArrayList<Question> questions) {
         this.title = title;
         this.questions = questions;
-        this.surveyResponse = surveyResponse;
     }
 
     public void addQuestion(Question question) {
@@ -47,14 +46,6 @@ public class Survey {
         this.title = title;
     }
 
-    public SurveyResponse getSurveyResponse() {
-        return surveyResponse;
-    }
-
-    public void setSurveyResponse(SurveyResponse surveyResponse) {
-        this.surveyResponse = surveyResponse;
-    }
-
     public ArrayList<Question> getQuestions() {
         return questions;
     }
@@ -69,6 +60,14 @@ public class Survey {
 
     public void setExpectedAnswers(ArrayList<Integer> expectedAnswers) {
         this.expectedAnswers = expectedAnswers;
+    }
+
+    public ArrayList<SurveyResponse> getResponses() {
+        return responses;
+    }
+
+    public void setResponses(ArrayList<SurveyResponse> responses) {
+        this.responses = responses;
     }
 
 }

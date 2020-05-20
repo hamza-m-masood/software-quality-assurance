@@ -52,9 +52,13 @@ public class Menu {
             case 1:
                 controller.createSurvey();
                 break;
+            case 2:
+                controller.answerSurvey();
+                break;
             case 3:
                 controller.viewAllSurveys();
                 break;
+
         }
     }
 
