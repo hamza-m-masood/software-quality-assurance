@@ -5,7 +5,9 @@ import java.util.ArrayList;
 public class Survey {
     String title;
     ArrayList<Question> questions = new ArrayList<>();
+
     SurveyResponse surveyResponse;
+    ArrayList<Integer> expectedAnswers = new ArrayList<>();
 
     public Survey() {
 
@@ -19,6 +21,10 @@ public class Survey {
 
     public void addQuestion(Question question) {
         this.questions.add(question);
+    }
+
+    public void addExpectedAnswer(int answer) {
+        this.expectedAnswers.add(answer);
     }
 
     public double getAverage() {
@@ -55,6 +61,14 @@ public class Survey {
 
     public void setQuestions(ArrayList<Question> questions) {
         this.questions = questions;
+    }
+
+    public ArrayList<Integer> getExpectedAnswers() {
+        return expectedAnswers;
+    }
+
+    public void setExpectedAnswers(ArrayList<Integer> expectedAnswers) {
+        this.expectedAnswers = expectedAnswers;
     }
 
 }
