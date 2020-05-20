@@ -17,14 +17,15 @@ public class Menu {
                         .println("Please choose from the following options (enter a number between 1 - 3 inclusive): ");
                 System.out.println("1. Create survey");
                 System.out.println("2. Respond to a survey");
-                System.out.println("3. View survey results");
-                System.out.println("4. Exit");
+                System.out.println("3. View all surveys");
+                System.out.println("4. View survey results");
+                System.out.println("5. Exit");
                 try {
 
                     input = sc.nextInt();
-                    if (input == 1 || input == 2 || input == 3) {
+                    if (input == 1 || input == 2 || input == 3 || input == 4) {
                         inputCorrect = true;
-                    } else if (input == 4) {
+                    } else if (input == 5) {
                         System.out.println("Goodbye!");
                         inputCorrect = true;
                     } else {
@@ -40,7 +41,7 @@ public class Menu {
             } while (!inputCorrect);
 
             processing(input);
-        } while (input != 4);
+        } while (input != 5);
 
         return "success";
     }
@@ -50,6 +51,8 @@ public class Menu {
         switch (input) {
             case 1:
                 controller.createSurvey();
+            case 3:
+                controller.viewAllSurveys();
         }
     }
 
