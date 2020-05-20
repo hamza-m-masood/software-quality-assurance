@@ -16,9 +16,9 @@ public class Survey {
         this.questions = questions;
         this.surveyResponse = surveyResponse;
     }
-    
-    public void addQuestion() {
 
+    public void addQuestion(Question question) {
+        this.questions.add(question);
     }
 
     public double getAverage() {

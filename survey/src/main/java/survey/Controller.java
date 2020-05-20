@@ -26,13 +26,13 @@ public class Controller {
         survey.setTitle(surveyName = sc.nextLine());
         do {
             System.out.println("Please enter question no." + count + ": ");
-            survey.getQuestions().add(new Question(question = sc.nextLine()));
+            survey.addQuestion(new Question(question = sc.nextLine()));
             count++;
         } while (count < 11);
         count = 0;
         System.out.println("\nTitle of your survey: ");
         System.out.println(survey.getTitle());
-        
+
         System.out.println("\nyour questions:");
         for (Question q : survey.getQuestions()) {
             System.out.println(q.getQuestion());
