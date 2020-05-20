@@ -67,4 +67,49 @@ public class Controller {
 
     }
 
+    public void answerSurvey() {
+        String surveyTitle;
+        Boolean surveyFound = false;
+        SurveyResponse surveyResponse = new SurveyResponse();
+        Survey chosenSurvey = new Survey();
+        if (surveys.isEmpty()) {
+            System.out.println("No surveys within database");
+        } else {
+            Scanner sc = new Scanner(System.in);
+            viewAllSurveys();
+            System.out.println("What survey would you like to answer? (please enter the name of the survey): ");
+            surveyTitle = sc.nextLine();
+            do {
+                for (Survey s : surveys) {
+                    if (surveyTitle.equalsIgnoreCase(s.getTitle())) {
+                        chosenSurvey = s;
+                        surveyFound = true;
+                        break;
+                    }
+                }
+
+                if (!surveyFound) {
+                    System.out.println("ERROR: Please type in a name that matches one of the surveys on the list: ");
+                    surveyTitle = sc.nextLine();
+                }
+
+            } while (!surveyFound);
+            int i = 1;
+            System.out.println("=======ANSWERING SURVEY=======");
+            for (Question q : chosenSurvey.getQuestions()) {
+                System.out.println("question " + i);
+                System.out.println(q.getQuestion());
+                i++;
+                System.out.print("answer (between 1-5 inclusive): ");
+                surveyResponse.getAnswers().add(Integer.parseInt(sc.nextLine()));
+
+            }
+            chosenSurvey.getResponses().add(surveyResponse);
+            System.out.println("\n\n=======SURVEY ENDED=======");
+            System.out.println("your answers : ");
+            
+        }
+
+    }
+
 }
