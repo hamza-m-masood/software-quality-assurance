@@ -2,7 +2,7 @@ package survey;
 
 public class Question {
     String question;
-
+    
     public Question() {
 
     }
