@@ -1,9 +1,7 @@
 package survey;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Unit test for simple App.
@@ -18,4 +16,9 @@ public class AppTest {
         assertEquals("success", menu.createMenu());
     }
 
+    @Test
+    public void createSurveyTest() {
+        Controller controller = new Controller();
+        assertEquals("success", controller.createSurvey());
+    }
 }
