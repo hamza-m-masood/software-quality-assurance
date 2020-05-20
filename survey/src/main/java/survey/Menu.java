@@ -58,6 +58,8 @@ public class Menu {
             case 3:
                 controller.viewAllSurveys();
                 break;
+            case 4:
+                controller.viewResults();
 
         }
     }

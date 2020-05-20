@@ -26,18 +26,6 @@ public class Survey {
         this.expectedAnswers.add(answer);
     }
 
-    public double getAverage() {
-        return 0;
-    }
-
-    public double getStandardDeviation() {
-        return 0;
-    }
-
-    public double getMinMaxScore() {
-        return 0;
-    }
-
     public String getTitle() {
         return title;
     }

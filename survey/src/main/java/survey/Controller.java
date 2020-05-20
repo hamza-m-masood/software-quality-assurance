@@ -1,6 +1,8 @@
 package survey;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class Controller {
@@ -112,6 +114,171 @@ public class Controller {
             }
         }
 
+    }
+
+    public void viewResults() {
+        Boolean surveyFound = false;
+        String surveyTitle;
+        Survey chosenSurvey = new Survey();
+        int answer;
+        if (surveys.isEmpty()) {
+            System.out.println("No surveys within database");
+        } else {
+            Scanner sc = new Scanner(System.in);
+            viewAllSurveys();
+            System.out
+                    .println("What survey would you like to view results for? (please enter the name of the survey): ");
+            surveyTitle = sc.nextLine();
+            do {
+                for (Survey s : surveys) {
+                    if (surveyTitle.equalsIgnoreCase(s.getTitle())) {
+                        chosenSurvey = s;
+                        surveyFound = true;
+                        break;
+                    }
+                }
+
+                if (!surveyFound) {
+                    System.out.println("ERROR: Please type in a name that matches one of the surveys on the list: ");
+                    surveyTitle = sc.nextLine();
+                }
+
+            } while (!surveyFound);
+            System.out.println("survey found");
+            if (chosenSurvey.getResponses().isEmpty()) {
+                System.out.println("Survey has not been answered yet");
+            } else {
+                System.out.println("\n1. View analytics for entire survey");
+                System.out.println("2. View analytics for each question within survey");
+                System.out.println("Please input 1 or 2: ");
+                answer = Integer.parseInt(sc.nextLine());
+                if (answer == 1) {
+                    System.out.println("\n\n==========SURVEY ANALYTICS==========");
+                    System.out.println("Survey average: ");
+                    System.out.println(getAverage(chosenSurvey));
+                    System.out.println("Survey Standard deviation");
+                    System.out.println(getStandardDeviation(chosenSurvey));
+                    System.out.println("Survey minimumn and maximum score: ");
+                    System.out.println(getMinMaxScore(chosenSurvey));
+                } else {
+                    System.out.println("\n\n==========SURVEY QUESTIONS ANALYTICS==========");
+                    System.out.println("Survey questions average: ");
+                    System.out.println(getResponseAverage(chosenSurvey));
+                    System.out.println("Survey Standard deviation");
+                    System.out.println(getResponseStandardDeviation(chosenSurvey));
+                    System.out.println("Survey minimumn and maximum score: ");
+                    System.out.println(getResponseMinMaxScore(chosenSurvey));
+                }
+            }
+
+        }
+    }
+
+    public double getAverage(Survey chosenSurvey) {
+        ArrayList<Survey> surveysFound = new ArrayList<>();
+        int answers = 0;
+        int size = 0;
+        for (Survey s : surveys) {
+            if (s.getTitle().equals(chosenSurvey.getTitle())) {
+                surveysFound.add(s);
+            }
+        }
+
+        for (Survey s : surveysFound) {
+            for (SurveyResponse r : s.getResponses()) {
+                for (int i = 0; i < r.getAnswers().size(); i++) {
+                    answers = answers + r.getAnswers().get(i);
+                }
+                size = size + r.getAnswers().size();
+            }
+
+        }
+        return answers / size;
+    }
+
+    public double getStandardDeviation(Survey chosenSurvey) {
+        ArrayList<Survey> surveysFound = new ArrayList<>();
+        ArrayList<Integer> answers = new ArrayList<>();
+        for (Survey s : surveys) {
+            if (s.getTitle().equals(chosenSurvey.getTitle())) {
+                surveysFound.add(s);
+            }
+        }
+
+        for (Survey s : surveysFound) {
+            for (SurveyResponse r : s.getResponses()) {
+                for (int i = 0; i < r.getAnswers().size(); i++) {
+                    answers.add(r.getAnswers().get(i));
+                }
+            }
+
+        }
+
+        // Step 1:
+        double mean = calculateAverage(answers);
+        double temp = 0;
+
+        for (int i = 0; i < answers.size(); i++) {
+            int val = answers.get(i);
+
+            // Step 2:
+            double squrDiffToMean = Math.pow(val - mean, 2);
+
+            // Step 3:
+            temp += squrDiffToMean;
+        }
+
+        // Step 4:
+        double meanOfDiffs = (double) temp / (double) (answers.size());
+
+        // Step 5:
+        return Math.sqrt(meanOfDiffs);
+
+    }
+
+    // helper method for calculating standard deviation
+    private double calculateAverage(List<Integer> marks) {
+        Integer sum = 0;
+        if (!marks.isEmpty()) {
+            for (Integer mark : marks) {
+                sum += mark;
+            }
+            return sum.doubleValue() / marks.size();
+        }
+        return sum;
+    }
+
+    public String getMinMaxScore(Survey chosenSurvey) {
+        ArrayList<Survey> surveysFound = new ArrayList<>();
+        ArrayList<Integer> answers = new ArrayList<>();
+        for (Survey s : surveys) {
+            if (s.getTitle().equals(chosenSurvey.getTitle())) {
+                surveysFound.add(s);
+            }
+        }
+
+        for (Survey s : surveysFound) {
+            for (SurveyResponse r : s.getResponses()) {
+                for (int i = 0; i < r.getAnswers().size(); i++) {
+                    answers.add(r.getAnswers().get(i));
+                }
+            }
+
+        }
+
+        return "Min : " + Collections.min(answers) + " Max: " + Collections.max(answers);
+    }
+
+    public double getResponseAverage(Survey chosenSurvey) {
+        return 0;
+    }
+
+    public double getResponseStandardDeviation(Survey chosenSurvey) {
+        return 0;
+    }
+
+    public double getResponseMinMaxScore(Survey chosenSurvey) {
+        return 0;
     }
 
 }
