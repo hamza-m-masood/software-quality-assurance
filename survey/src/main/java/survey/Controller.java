@@ -108,6 +108,7 @@ public class Controller {
             System.out.println("\n\n=======SURVEY ENDED=======");
             System.out.println("your answers : ");
             
+            System.out.println("");
         }
 
     }
