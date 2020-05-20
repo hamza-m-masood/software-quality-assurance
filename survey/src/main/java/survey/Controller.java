@@ -107,8 +107,9 @@ public class Controller {
             chosenSurvey.getResponses().add(surveyResponse);
             System.out.println("\n\n=======SURVEY ENDED=======");
             System.out.println("your answers : ");
-            
-            System.out.println("");
+            for (int s : surveyResponse.getAnswers()) {
+                System.out.println(s);
+            }
         }
 
     }
