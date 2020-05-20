@@ -3,6 +3,7 @@ package survey;
 import java.util.Scanner;
 
 public class Menu {
+    Controller controller = new Controller();
 
     public String createMenu() {
         int input = 0;
@@ -47,12 +48,13 @@ public class Menu {
     }
 
     public void processing(int input) {
-        Controller controller = new Controller();
         switch (input) {
             case 1:
                 controller.createSurvey();
+                break;
             case 3:
                 controller.viewAllSurveys();
+                break;
         }
     }
 
