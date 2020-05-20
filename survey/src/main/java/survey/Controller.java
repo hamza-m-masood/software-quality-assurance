@@ -121,6 +121,7 @@ public class Controller {
         String surveyTitle;
         Survey chosenSurvey = new Survey();
         int answer;
+        int question;
         if (surveys.isEmpty()) {
             System.out.println("No surveys within database");
         } else {
@@ -161,13 +162,16 @@ public class Controller {
                     System.out.println("Survey minimumn and maximum score: ");
                     System.out.println(getMinMaxScore(chosenSurvey));
                 } else {
+                    System.out.println(
+                            "Enter in the question number you would like to see analytics from: (enter a number from 1 - 10 inclusive");
+                    question = Integer.parseInt(sc.nextLine());
                     System.out.println("\n\n==========SURVEY QUESTIONS ANALYTICS==========");
                     System.out.println("Survey questions average: ");
-                    System.out.println(getResponseAverage(chosenSurvey));
+                    System.out.println(getResponseAverage(chosenSurvey, question));
                     System.out.println("Survey Standard deviation");
-                    System.out.println(getResponseStandardDeviation(chosenSurvey));
+                    System.out.println(getResponseStandardDeviation(chosenSurvey, question));
                     System.out.println("Survey minimumn and maximum score: ");
-                    System.out.println(getResponseMinMaxScore(chosenSurvey));
+                    System.out.println(getResponseMinMaxScore(chosenSurvey, question));
                 }
             }
 
@@ -269,16 +273,80 @@ public class Controller {
         return "Min : " + Collections.min(answers) + " Max: " + Collections.max(answers);
     }
 
-    public double getResponseAverage(Survey chosenSurvey) {
-        return 0;
+    public double getResponseAverage(Survey chosenSurvey, int question) {
+        ArrayList<Survey> surveysFound = new ArrayList<>();
+        ArrayList<Integer> answers = new ArrayList<>();
+        for (Survey s : surveys) {
+            if (s.getTitle().equals(chosenSurvey.getTitle())) {
+                surveysFound.add(s);
+            }
+        }
+
+        for (Survey s : surveysFound) {
+            for (SurveyResponse r : s.getResponses()) {
+                answers.add(r.getAnswers().get(question));
+            }
+
+        }
+
+        return calculateAverage(answers);
     }
 
-    public double getResponseStandardDeviation(Survey chosenSurvey) {
-        return 0;
+    public double getResponseStandardDeviation(Survey chosenSurvey, int question) {
+        ArrayList<Survey> surveysFound = new ArrayList<>();
+        ArrayList<Integer> answers = new ArrayList<>();
+        for (Survey s : surveys) {
+            if (s.getTitle().equals(chosenSurvey.getTitle())) {
+                surveysFound.add(s);
+            }
+        }
+
+        for (Survey s : surveysFound) {
+            for (SurveyResponse r : s.getResponses()) {
+                answers.add(r.getAnswers().get(question));
+            }
+
+        }
+
+        // Step 1:
+        double mean = calculateAverage(answers);
+        double temp = 0;
+
+        for (int i = 0; i < answers.size(); i++) {
+            int val = answers.get(i);
+
+            // Step 2:
+            double squrDiffToMean = Math.pow(val - mean, 2);
+
+            // Step 3:
+            temp += squrDiffToMean;
+        }
+
+        // Step 4:
+        double meanOfDiffs = (double) temp / (double) (answers.size());
+
+        // Step 5:
+        return Math.sqrt(meanOfDiffs);
     }
 
-    public double getResponseMinMaxScore(Survey chosenSurvey) {
-        return 0;
+    public String getResponseMinMaxScore(Survey chosenSurvey, int question) {
+        ArrayList<Survey> surveysFound = new ArrayList<>();
+        ArrayList<Integer> answers = new ArrayList<>();
+        for (Survey s : surveys) {
+            if (s.getTitle().equals(chosenSurvey.getTitle())) {
+                surveysFound.add(s);
+            }
+        }
+
+        for (Survey s : surveysFound) {
+            for (SurveyResponse r : s.getResponses()) {
+                answers.add(r.getAnswers().get(question));
+            }
+
+        }
+
+        return "Min : " + Collections.min(answers) + " Max: " + Collections.max(answers);
+
     }
 
 }
