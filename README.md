@@ -78,6 +78,9 @@ When the sprint is started the team member is assigned a user story number and t
 
 # Team Version Control<a name = "tvc"></a>
 
+Version control systems are a category of software tools that help a software team manage changes to source code over time. ... If a mistake is made, developers can turn back the clock and compare earlier versions of the code to help fix the mistake while minimizing disruption to all team members.
+
+I have created many branches on this github repository. You will notice that the two main branches are the the develop and the documentation branch. All other branches stem off of these branches. The develop branch takes care of the readme file adding to the documentation with different branches such as "code-review" branch or "tdd" branch. The development branch stems off into sprints. Each sprint has its own branch. Once the sprint is finished it is linked to the develop branch and then to the master branch.At the end, the develop, documentation, and master branch are all tied together to create one project.
 # Code-review Checklist<a name = "coderev"></a>
 
 [Top](#contents)
