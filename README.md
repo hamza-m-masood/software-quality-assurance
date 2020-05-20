@@ -73,12 +73,35 @@ When the sprint is started the team member is assigned a user story number and t
 | 9              | 3               | 3        | 🗹     | 𐄂           | 𐄂    | 3               | -                 |
 
 # Test Driven Development<a name = "tdd"></a>
-Test-driven development (TDD) is a software development process that relies on the repetition of a very short development cycle: requirements are turned into very specific test cases, then the code is improved so that the tests pass. This is opposed to software development that allows code to be added that is not proven to meet requirements. 
+
+Test-driven development (TDD) is a software development process that relies on the repetition of a very short development cycle: requirements are turned into very specific test cases, then the code is improved so that the tests pass. This is opposed to software development that allows code to be added that is not proven to meet requirements.
+For test driven development(TDD) I have used a java package called JUNit 5.0. This is a software package that lets you run JUnit testing on java. I have used the "test-runner" extension on vscode to be able to run JUnit tests in vscode.
+
+### Developing with
+
+1. Firstly, add a test.
+2. Run all the tests and see if any new test fails.
+3. Update the code to make it pass the new tests.
+4. Run the test again and if they fail then refactor again and repeat.
 
 Since we are coding out the application in Java we will be using JUnit testing.
+
 # Test Coverage Metric<a name = "tcm"></a>
 
+EclEmma is a free Java code coverage tool for Eclipse, available under the Eclipse Public License. It brings code coverage analysis directly into the Eclipse workbench:
+
+Fast develop/test cycle: Launches from within the workbench like JUnit test runs can directly be analyzed for code coverage.
+Rich coverage analysis: Coverage results are immediately summarized and highlighted in the Java source code editors.
+Non-invasive: EclEmma does not require modifying your projects or performing any other setup.</br>
+<img src="testcoverage.gif"
+     alt="Markdown Monster icon"
+      /></br>
+
 # Team Version Control<a name = "tvc"></a>
+
+Version control systems are a category of software tools that help a software team manage changes to source code over time. ... If a mistake is made, developers can turn back the clock and compare earlier versions of the code to help fix the mistake while minimizing disruption to all team members.
+
+I have created many branches on this github repository. You will notice that the two main branches are the the develop and the documentation branch. All other branches stem off of these branches. The develop branch takes care of the readme file adding to the documentation with different branches such as "code-review" branch or "tdd" branch. The development branch stems off into sprints. Each sprint has its own branch. Once the sprint is finished it is linked to the develop branch and then to the master branch. At the end, the develop, documentation, and master branch are all tied together to create one project.
 
 # Code-review Checklist<a name = "coderev"></a>
 
@@ -94,26 +117,47 @@ b) Remove the commented code as this is always a blocker, while going through th
 
 a) The code should follow the defined architecture.
 
-1.Separation of Concerns followed
-Split into multiple layers and tiers as per requirements (Presentation, Business and Data layers).
-Split into respective files (HTML, JavaScript and CSS).
-2.Code is in sync with existing code patterns/technologies.
-3.Design patterns: Use appropriate design pattern (if it helps), after completely understanding the problem and context.
+1. Separation of Concerns followed
+   Split into multiple layers and tiers as per requirements (Presentation, Business and Data layers).
+   Split into respective files (HTML, JavaScript and CSS).
+2. Code is in sync with existing code patterns/technologies.
+3. Design patterns: Use appropriate design pattern (if it helps), after completely understanding the problem and context.
 
 ### 3. Coding best practices
 
-1.No hard coding, use constants/configuration values.</br>
-2.Group similar values under an enumeration (enum).</br>
-3.Avoid multiple if/else blocks.</br>
-4.Use framework features, wherever possible instead of writing custom code.
+1. No hard coding, use constants/configuration values.</br>
+2. Group similar values under an enumeration (enum).</br>
+3. Avoid multiple if/else blocks.</br>
+4. Use framework features, wherever possible instead of writing custom code.
 
 ### 4. Non Functional requirements
 
 a) Maintainability (Supportability) – The application should require the least amount of effort to support in near future. It should be easy to identify and fix a defect.</br></br>
-1.Readability: Code should be self-explanatory. Get a feel of story reading, while going through the code. Use appropriate name for variables, functions and classes. If you are taking more time to understand the code, then either code needs refactoring or at least comments have to be written to make it clear.
-2.Code is in sync with existing code patterns/technologies.</br>
-3.Design patterns: Use appropriate design pattern (if it helps), after </br>completely understanding the problem and context.
+
+1. Readability: Code should be self-explanatory. Get a feel of story reading, while going through the code. Use appropriate name for variables, functions and classes. If you are taking more time to understand the code, then either code needs refactoring or at least comments have to be written to make it clear.
+
+2. Code is in sync with existing code patterns/technologies.</br>
+
+3. Design patterns: Use appropriate design pattern (if it helps), after </br>completely understanding the problem and context.
+
+b) Reusability</br></br>
+
+1. DRY (Do not Repeat Yourself) principle: The same code should not be repeated more than twice.
+
+2. Consider reusable services, functions and components.
+
+3. Consider generic functions and classes.
 
 ### 5. Object-Oriented Analysis and Design (OOAD) Principles
+
+1. Single Responsibility Principle (SRS): Do not place more than one responsibility into a single class or function, refactor into separate classes and functions.
+
+2. Open Closed Principle: While adding new functionality, existing code should not be modified. New functionality should be written in new classes and functions.
+
+3. Liskov substitutability principle: The child class should not change the behavior (meaning) of the parent class. The child class can be used as a substitute for a base class.
+
+4. Interface segregation: Do not create lengthy interfaces, instead split them into smaller interfaces based on the functionality. The interface should not contain any dependencies (parameters), which are not required for the expected functionality.
+
+5. Dependency Injection: Do not hardcode the dependencies, instead inject them.
 
 [Top](#contents)
